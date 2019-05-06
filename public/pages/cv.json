@@ -1,0 +1,36 @@
+{
+    "Education" : {
+        "Maharaja Sayajirao University, Vadodara (MSU)" : {
+            "BE in Computer Science and Engineering": [
+                "First Class with Distinction in all 7 semesters",
+                "Ranked first in 6 out of 7 semesters",
+                "Highest Aggregate till 7th semester",
+                "Student of The Year award winner"
+            ]
+        },
+        "Kelavani Trust Vidyalaya" : [
+            "Higher Education : Percentile 99.48, Percentage - 88.7",
+            "Secondary Education : Percentile 99.92, Percentage - 93.5"
+        ]
+    },
+    "Certificates" : {
+        "National Talent Search Examination Secondary" : "Top 100 in Science and Mathematics",
+        "National Talent Search Examination Higher Secondary" : "Qualified for Round 2",
+        "All India Essay Writing Event" : "Honorable Mention",
+        "Community Science Center" : "Winner of Conmat Cosmopolitan Tree Garden Award"
+    },
+    "Softwares Games made for personal learning purposes" : [
+        "Ping-Pong game",
+        "Tetris",
+        "Rogue-like zombie shooter ",
+        "Basic game engine in C++ and",
+        "OpenGL"
+    ],
+    "Interests" : {
+        "Sports" : "Tennis for physical exercise",
+        "Pixel Art" : "Making pixel art/sprites/concept arts as a hobby",
+        "Game Developing" : "The best way to combine graphics and AI skills along with puzzle solving ability",
+        "eSports" : "Because I think competitive and professional gaming is the future",
+         "Photo Blogging" : "a night time scenario photo blog which I created to know about new places"
+    }
+}

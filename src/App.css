@@ -1,33 +1,374 @@
-.App {
+ #sidebar {
+  z-index: 2;
+  background: black;
+  min-height: 500px;
+  height: 100vh;
+  display: none;
+  color: white;
+  text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align: center;
+ }
+
+ body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+#me {
+  margin: 10vh 0 0 0;
+}
+
+#me > img {
+  border: 5px solid grey; 
+  height: 30vh; 
+  width: 30vh; 
+  margin: 0 auto 20px auto;
+  border-radius: 50%;
+}
+
+#me > h1 {
+  width: 100%;
+  font-size: 28px; 
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+#me > p {
+  width: 100%;
+  margin: 0;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+.btn:hover {
+  color: #212529;
+  text-decoration: none;
+}
+
+.btn:focus, .btn.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
+/* Main content styling for the toggle effect */
+#main-content {
+  overflow-y: scroll; 
+  overflow: -moz-scrollbars-none; 
+  -ms-overflow-style: none; 
+  height: 100vh;  
+  display: block;
+}
+
+@media (max-width: 768px) {
+  /*Styles created for the toggle effect only*/
+  #wrapper.menuDisplayed #sidebar {
+    display: block;
+  }
+
+  .contact-info{
+    width: 80%;
+  }
+
+  /*Styles created for the toggle effect only*/
+  #wrapper.menuDisplayed #main-content {
+    display: none;
+  }
+}
+
+/* CSS for mobile sceen view */
+@media (min-width: 768px) {
+  #sidebar {
+    display: block;
+  }
+
+  .contact-info {
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-around;
+  }
+}
+
+/* Navbar styles */
+.navi {
+  display: block;
+  margin-top: 5vh;
+  margin-right: 15px;
+  list-style: none;
+  width: 100%;
+}
+
+/* Navbar individual element's styles */
+.navi > li > a {
+  margin-top: 5px;
   color: white;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  width: 80%;
+  margin: 2px auto 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+/* Navbar individual element's active state and on hover styles */
+.show-active, .navi > li > a:hover {
+  background: grey;
+  color: black !important;
+  text-decoration: none !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Social links styles */
+.contact-info {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Social links individual element's styles */
+.contact-info > li > a {
+  color: white;
+  display: block;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  margin: 10px;
+  line-height: 1.3em;
+  text-align: center;
+  border-radius: 50%;
+}
+
+/* Social links individual element's on hover styles */
+.contact-info > li > a:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.fa-github {
+  background: #211f1f ;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+}
+
+.fa-envelope-square {
+  background: #dd4b39;
+}
+
+/* projects popup styles */
+#project {
+  display: block;
+  position: fixed;
+  z-index: 3;
+  padding-top: 10%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Project popup content styles */
+#project-content {
+  background: black;
+  color: white;
+  margin: auto;
+  width: 80%;
+  padding-bottom: 5%;
+  margin-bottom: 15%;
+  border-radius: 2%;
+}
+
+/* Popup close button style */
+#close {
+  color: white;
+  float: right;
+  font-size: 36px;
+  width: 40px;
+  font-weight: bold;
+}
+
+/* Popup close button's hover and focus styles */
+#close:hover,
+#close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Porject image styles */
+.project-button {
+  width: 95%;
+  padding: 5% 2.5%;
+  margin: 0;
+}
+
+iframe {
+  width: 95%;
+  margin: 5% 2.5%;
+  min-height: 400px;
+}
+
+#p-title {
+  text-align: center;
+}
+
+#p-repo {
+  display: block;
+  text-align: center;
+  widows: 100%;
+  color: white;
+  text-decoration: none;
+}
+
+#p-repo:hover {
+  text-decoration: underline;
+}
+
+/* Project image button's hover and focus styles */
+.project-button:hover,
+.project-button:focus {
+  width: 100%;
+  padding: 1.5% 0;
+  margin: 0;
+}
+
+/* Padding for the contents of description and heghlights */
+dd {
+  padding-left: 10%;
+}
+
+/* About Me main content */
+.about-me {
+  padding:  0% 5%;
+  text-align: justify;
+}
+
+/* Toggle menu button's styles */
+#toggle-menu {
+  position: fixed;
+  z-index: 3;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+/* Making the scrollbar invisible in Google Chrome */
+::-webkit-scrollbar {
+  display: none;
+}
+
+#cv ul, #cv dd, #cv dt, #cv li {
+  width: 100%;
+  padding-left: 10px;
+}
+
+#cv > dl > dt {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  margin: 0 -25px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  line-height: 1.2;
+  font-size: 1.5rem;
+}
+
+#cv > dl > dd > ul > dl > li > dt {
+  font-weight: bold;
+}
+
+#cv > dl > dt > ul >li {
+  list-style: none;
+}
+
+#cv li, #cv dd {
+  margin-left: 5px;
+}
+
+#cv a {
+  font-size: 20px;
+  position: absolute;
+  margin-top: 100px; 
+  bottom: 50px;
+  right: 10px;
+}
+
+#page-title {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background: white;
+  margin: -15px -30px;
+  padding: 0 0 0 15px;
+  font-size: 2rem;
+  border-bottom: 2px solid black; 
+}
+
+#page-content {
+  margin: 75px 0 0 0;
+  padding-left: 15px;
+}
+
+#email {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+#email:hover {
+  text-decoration: underline;
+}
+
+.page {
+  padding: 15px;
 }

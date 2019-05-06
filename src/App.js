@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import './bootstrap-grid.min.css';
 import './App.css';
-import MainContent from './MainContent'
+import MainContent from './MainContentComponents/MainContent'
 
 class App extends Component {
   constructor(props) {

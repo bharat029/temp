@@ -4,6 +4,11 @@ import {NavLink} from 'react-router-dom'
 
 export default function SideBar() {
 
+    const clickHandler = (e) => {
+        document.title = e.target.name + ' - Kunjal Panchal'
+        document.getElementById('wrapper').classList.remove('menuDisplayed')
+    }
+
     return (
     <div className="col-md-3 d-md-block" id="sidebar">
         <div id="me" className="row">
@@ -14,13 +19,13 @@ export default function SideBar() {
         <div id="navi" className="row">
         <ul className="navi">
             <li>
-                <NavLink id="aboutme" onClick={() => document.getElementById('wrapper').classList.remove('menuDisplayed')} className="navi-item" exact to="/">About me</NavLink>
+                <NavLink id="aboutme" name="About Me" onClick={clickHandler} className="navi-item" exact to="/">About me</NavLink>
             </li>
             <li>
-                <NavLink id="projects" onClick={() => document.getElementById('wrapper').classList.remove('menuDisplayed')} className="navi-item" to="/projects">Projects</NavLink>
+                <NavLink id="projects" name="Projects" onClick={clickHandler} className="navi-item" to="/projects">Projects</NavLink>
             </li>
             <li>
-                <NavLink id="cv" onClick={() => document.getElementById('wrapper').classList.remove('menuDisplayed')} className="navi-item" to="/cv">CV</NavLink>
+                <NavLink id="cv" name="CV" onClick={clickHandler} className="navi-item" to="/cv">CV</NavLink>
             </li>
         </ul>
         </div>

@@ -299,11 +299,11 @@ dd {
   right: 10px;
   width: 50px;
   height: 50px;
+  font-size: 24px;
   border: 2px solid black;
   border-radius: 50%;
 }
 
-/* Making the scrollbar invisible in Google Chrome */
 ::-webkit-scrollbar {
   display: none;
 }
@@ -339,6 +339,7 @@ dd {
   font-size: 20px;
   position: absolute;
   margin-top: 100px; 
+  text-decoration: none;
   bottom: 50px;
   right: 10px;
 }

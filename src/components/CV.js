@@ -19,7 +19,7 @@ export default class CV extends Component {
       }
       
       if(Array.isArray(data[key])){
-        if(key === "Softwares Games made for personal learning purposes") {
+        if(key === "Softwares Games") {
           res += "<dt><i class='fa fa-gamepad'></i> " + key + "</dt><dd><ul>" + this.getUlStr(data[key]) + "<ul></dd>";
         } else {
           res += "<dt>" + key + "</dt><dd><ul>" + this.getUlStr(data[key]) + "<ul></dd>";

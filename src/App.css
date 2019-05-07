@@ -104,34 +104,14 @@
   display: block;
 }
 
-@media (max-width: 768px) {
-  /*Styles created for the toggle effect only*/
-  #wrapper.menuDisplayed #sidebar {
-    display: block;
-  }
-
-  .contact-info{
-    width: 80%;
-  }
-
-  /*Styles created for the toggle effect only*/
-  #wrapper.menuDisplayed #main-content {
-    display: none;
-  }
+#wrapper.menuDisplayed #sidebar {
+  display: block;
 }
 
-/* CSS for mobile sceen view */
-@media (min-width: 768px) {
-  #sidebar {
-    display: block;
-  }
-
-  .contact-info {
-    width: 100%;
-    margin: 0 auto;
-    justify-content: space-around;
-  }
+#wrapper.menuDisplayed #main-content {
+  display: none;
 }
+
 
 /* Navbar styles */
 .navi {
@@ -164,8 +144,9 @@
 .contact-info {
   display: flex;
   position: absolute;
-  bottom: 0;
-  padding: 0;
+  width: 80%;
+  margin: 0 auto;
+  bottom: 10vh;
   list-style: none;
 }
 
@@ -371,4 +352,18 @@ dd {
 
 .page {
   padding: 15px;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+    display: block;
+  }
+
+  .contact-info {
+    width: 100%;
+    bottom: 0;
+    padding: 0;
+    margin: 0 auto;
+    justify-content: space-around;
+  }
 }

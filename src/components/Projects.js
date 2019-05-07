@@ -14,7 +14,7 @@ export default class Projects extends Component {
   }
 
   componentDidMount = () => {
-    axios.get('/projects/project_list.json')
+    axios.get(process.env.PUBLIC_URL + '/projects/project_list.json')
       .then((result) => {
         this.setState({
           project_list: result.data
@@ -41,7 +41,7 @@ export default class Projects extends Component {
   }
 
   btnClick = (e) => {
-    axios.get('/projects/' + e.target.alt + '.json')
+    axios.get(process.env.PUBLIC_URL + '/projects/' + e.target.alt + '.json')
     .then((result) => {
       this.setState({
         project: result.data
@@ -61,7 +61,7 @@ export default class Projects extends Component {
   }
 
   getBtns(proj, idx) {
-    let imgsrc = '/imgs/' + proj + '.jpg';
+    let imgsrc =  process.env.PUBLIC_URL + '/imgs/' + proj + '.jpg';
     return <div key={idx} className="col-lg-3 col-md-4 col-sm-6 col-12"><img className="project-button mx-auto my-auto" onClick={this.btnClick} src={imgsrc} alt={proj} /></div>
   }
 

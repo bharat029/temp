@@ -154,7 +154,7 @@
 }
 
 /* Navbar individual element's active state and on hover styles */
-.show-active, .navi > li > a:hover {
+.active, .navi > li > a:hover {
   background: grey;
   color: black !important;
   text-decoration: none !important;

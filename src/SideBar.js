@@ -1,43 +1,26 @@
 /* eslint-disable */
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 
-export default function SideBar({section, changeSection}) {
+export default function SideBar() {
   
-    const clickHandler = (e) => {
-        e.preventDefault()
-
-        changeSection(e.target.id)
-    }
-
     return (
     <div className="col-md-3 d-md-block" id="sidebar">
         <div id="me" className="row">
-        <img src="imgs/me.jpeg" alt="Kunjal Panchal" />
+        <img src="/imgs/me.jpeg" alt="Kunjal Panchal" />
         <h1>Kunjal Panchal</h1>
         <p>Computer Science Major</p>
         </div>
         <div id="navi" className="row">
         <ul className="navi">
             <li>
-            { 
-                section === 'aboutme' ?  
-                <a id="aboutme" className="navi-item show-active" onClick={clickHandler} href="About Me">About me</a> : 
-                <a id="aboutme" className="navi-item" onClick={clickHandler} href="About Me">About me</a>
-            }
+                <NavLink id="aboutme" className="navi-item" exact to="/">About me</NavLink>
             </li>
             <li>
-            { 
-                section === 'projects' ?  
-                <a id="projects" className="navi-item show-active" onClick={clickHandler} href="Projects">Projects</a> : 
-                <a id="projects" className="navi-item" onClick={clickHandler} href="Projects">Projects</a>
-            }
+                <NavLink id="projects" className="navi-item" to="/projects">Projects</NavLink>
             </li>
             <li>
-            { 
-                section === 'cv' ?  
-                <a id="cv" className="navi-item show-active" onClick={clickHandler} href="CV">CV</a> :
-                <a id="cv" className="navi-item" onClick={clickHandler} href="CV">CV</a>
-            }
+                <NavLink id="cv" className="navi-item" to="/cv">CV</NavLink>
             </li>
         </ul>
         </div>
@@ -47,7 +30,7 @@ export default function SideBar({section, changeSection}) {
             <a href="mailto:kunjalspanchal@gmail.com" className="fa fa-envelope-square"></a>
             </li>
             <li>
-            <a href="https://in.linkedin.com/in/kunjal-panchal-07a0b514b" className="fa fa-linkedin"></a>
+            <a href="https://in.NavLinkedin.com/in/kunjal-panchal-07a0b514b" className="fa fa-NavLinkedin"></a>
             </li>
             <li>
             <a href="https://github.com/astuary" className="fa fa-github"></a>

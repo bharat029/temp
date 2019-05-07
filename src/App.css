@@ -202,7 +202,6 @@
 
 /* projects popup styles */
 #project {
-  display: block;
   position: fixed;
   z-index: 3;
   padding-top: 10%;

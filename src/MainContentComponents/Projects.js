@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ProjectPopUp from './ProjectPopUp'
 
 export default class Projects extends Component {
   constructor(props) {
@@ -26,8 +27,7 @@ export default class Projects extends Component {
 
       window.onclick = (event) => {
         if (event.target === document.getElementById('project')) {
-          event.target.style.display = "none";
-          document.querySelector('#p-demo').src = this.state.project['p-demo'];
+          this.closePopUp()
         }
       };    
   } 
@@ -55,8 +55,6 @@ export default class Projects extends Component {
   }
 
   closePopUp = e => {
-    e.target.parentElement.parentElement.style.display = "none"
-    document.getElementById('p-demo').src = this.state.project['p-demo']
     this.setState({
       project: {}
     })
@@ -83,31 +81,7 @@ export default class Projects extends Component {
           }
           {
             this.isEmpty(project) ? 
-            null:
-            <div id="project">
-            <div id="project-content">
-              <span id="close" onClick={this.closePopUp}>&times;</span>
-              <h2 id="p-title">{project['p-title']}</h2>
-              <iframe id="p-demo" title={project['p-title']} src={project['p-demo']} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>            
-              <dl>
-                <dt><h4>Description:</h4></dt>
-                <dd id="p-desc">
-                  {
-                    project['p-desc'].map((desc, idx) => <p key={idx}>{desc}</p>)
-                  }
-                </dd>
-                <dt><h4>Highlights: </h4></dt>
-                <dd>
-                  <ul id="p-high">
-                    {
-                      project['p-high'].map((highl, idx) => <li key={idx}>{highl}</li>)
-                    }
-                  </ul>
-                </dd>
-              </dl>
-              <a id="p-repo" href={project['p-repo']}>See Repository</a>
-            </div>
-          </div>
+            null:<ProjectPopUp project={project} closePopUp={this.closePopUp} />
           }
         </div>
         {errorMsg ? <p>{errorMsg}</p>: null}

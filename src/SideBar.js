@@ -1,6 +1,7 @@
 /* eslint-disable */
-import React from 'react'
-import {NavLink} from 'react-router-dom'
+import React from 'react';
+import {NavLink} from 'react-router-dom';
+import Me from './imgs/me.png'
 
 export default function SideBar() {
 
@@ -12,7 +13,7 @@ export default function SideBar() {
     return (
     <div className="col-md-3 d-md-block" id="sidebar">
         <div id="me" className="row">
-        <img src={process.env.PUBLIC_URL + "/imgs/me.jpeg"} alt="Kunjal Panchal" />
+        <img src={Me} alt="Kunjal Panchal" />
         <h1>Kunjal Panchal</h1>
         <p>Computer Science Major</p>
         </div>
@@ -35,7 +36,7 @@ export default function SideBar() {
                 <a href="mailto:kunjalspanchal@gmail.com" className="fa fa-envelope-square"></a>
             </li>
             <li>
-                <a href="https://in.linkedin.com/in/kunjal-panchal-07a0b514b" class="fa fa-linkedin"></a>
+                <a href="https://in.linkedin.com/in/kunjal-panchal-07a0b514b" className="fa fa-linkedin"></a>
             </li>
             <li>
                 <a href="https://github.com/astuary" className="fa fa-github"></a>

@@ -315,7 +315,11 @@ dd {
   margin-left: 5px;
 }
 
-#cv a {
+#download-btn-container {
+  position: relative;
+}
+
+#download-btn-container a {
   font-size: 20px;
   position: absolute;
   margin-top: 100px; 

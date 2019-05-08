@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import ProjectPopUp from './ProjectPopUp'
 
 export default class Projects extends Component {
@@ -7,29 +6,17 @@ export default class Projects extends Component {
     super(props)
   
     this.state = {
-       project_list: [],
-       project: {},
-       errorMsg: ''
+       project_list: require('../projects/project_list.json'), 
+       project: {}
     };
   }
 
   componentDidMount = () => {
-    axios.get(process.env.PUBLIC_URL + '/projects/project_list.json')
-      .then((result) => {
-        this.setState({
-          project_list: result.data
-        })
-      }).catch((err) => {
-        this.setState({
-          errorMsg: 'Error retriving data'
-        })
-      })
-
-      window.onclick = (event) => {
-        if (event.target === document.getElementById('project')) {
-          this.closePopUp()
-        }
-      };    
+    window.onclick = (event) => {
+      if (event.target === document.getElementById('project')) {
+        this.closePopUp()
+      }
+    };    
   } 
 
   isEmpty(obj) {
@@ -41,16 +28,8 @@ export default class Projects extends Component {
   }
 
   btnClick = (e) => {
-    axios.get(process.env.PUBLIC_URL + '/projects/' + e.target.alt + '.json')
-    .then((result) => {
-      this.setState({
-        project: result.data
-      })
-      document.getElementById('project').style.display = 'block'
-    }).catch((err) => {
-      this.setState({
-        errorMsg: 'Error retriving data'
-      })
+    this.setState({
+      project: require('../projects/' + e.target.alt + '.json')
     })
   }
 
@@ -60,31 +39,21 @@ export default class Projects extends Component {
     })
   }
 
-  getBtns(proj, idx) {
-    let imgsrc =  process.env.PUBLIC_URL + '/imgs/' + proj + '.jpg';
-    return <div key={idx} className="col-lg-3 col-md-4 col-sm-6 col-12"><img className="project-button mx-auto my-auto" onClick={this.btnClick} src={imgsrc} alt={proj} /></div>
-  }
-
   render() {
-    const { project_list, project, errorMsg } = this.state;
+    const { project_list, project } = this.state;
     
     return (
       <div className="page">
         <h2 id="page-title">Project Section</h2>
         <div id="page-content">
-          {
-            (project_list.length) ? 
-            <div id="proj-wrapper" className="row no-gutters">
-              {project_list.map((proj, idx) => this.getBtns(proj, idx))}
-            </div>:
-            <div className="loading"></div>
-          }
+          <div id="proj-wrapper" className="row no-gutters">
+            {project_list.map((proj, idx) => <div key={idx} className="col-lg-3 col-md-4 col-sm-6 col-12"><img className="project-button" onClick={this.btnClick} src={require('../imgs/' + proj +'.png')} alt={proj} /></div>)}
+          </div>
           {
             this.isEmpty(project) ? 
             null:<ProjectPopUp project={project} closePopUp={this.closePopUp} />
           }
         </div>
-        {errorMsg ? <p>{errorMsg}</p>: null}
       </div>
     )
   }

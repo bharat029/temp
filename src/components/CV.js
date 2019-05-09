@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 const CV = ({ cv }) => {
   function getStr(data, first) {
@@ -46,19 +47,24 @@ const CV = ({ cv }) => {
   }
 
   return (
-    <div className="page">
-      <h2 id="page-title">CV</h2>
-      <div id="page-content">
-        <div id='cv' dangerouslySetInnerHTML={{__html: getStr(cv, true)}} />
-        <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-        <div id='download-btn-container'>
-          <a href={require('../files/Resume.pdf')} rel="noopener noreferrer" className='btn btn-primary' target='_blank'>
-            <i className='fa fa-download'></i> Download CV
-          </a>
+    <>
+      <Helmet>
+        <title>CV - Kunjal Panchal</title>
+      </Helmet>
+      <div className="page">
+        <h2 id="page-title">CV</h2>
+        <div id="page-content">
+          <div id='cv' dangerouslySetInnerHTML={{__html: getStr(cv, true)}} />
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <div id='download-btn-container'>
+            <a href={require('../files/Resume.pdf')} rel="noopener noreferrer" className='btn btn-primary' target='_blank'>
+              <i className='fa fa-download'></i> Download CV
+            </a>
+          </div>
         </div>
+        <br></br><br></br>
       </div>
-      <br></br><br></br>
-    </div>
+    </>
   )
 }
 

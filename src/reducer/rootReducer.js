@@ -1,12 +1,10 @@
-import aboutme from '../pages/aboutMe.json'
-import project_list from '../projects/project_list.json'
-import project_details from '../projects/project_details'
-import cv from '../pages/cv.json'
+import aboutme from '../pages/aboutMe'
+import projects from '../pages/projects.json'
+import cv from '../pages/cv'
 
 const initState = {
     aboutme,
-    project_list,
-    project_details,
+    projects,
     cv
 }
 

@@ -6,7 +6,6 @@ import Me from './imgs/me.png'
 export default function SideBar() {
 
     const clickHandler = (e) => {
-        document.title = e.target.name + ' - Kunjal Panchal'
         document.getElementById('wrapper').classList.remove('menuDisplayed')
     }
 

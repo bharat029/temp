@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import ProjectPopUp from './ProjectPopUp'
+import { connect } from 'react-redux'
 
-export default class Projects extends Component {
+class Projects extends Component {
   constructor(props) {
     super(props)
   
     this.state = {
-       project_list: require('../projects/project_list.json'), 
        project: {}
     };
   }
@@ -29,7 +29,7 @@ export default class Projects extends Component {
 
   btnClick = (e) => {
     this.setState({
-      project: require('../projects/' + e.target.alt + '.json')
+      project: this.props.project_details.find(project => project['p-title'] === e.target.alt)
     })
   }
 
@@ -40,7 +40,8 @@ export default class Projects extends Component {
   }
 
   render() {
-    const { project_list, project } = this.state;
+    const { project_list } = this.props
+    const { project } = this.state
     
     return (
       <div className="page">
@@ -58,3 +59,12 @@ export default class Projects extends Component {
     )
   }
 }
+
+const mapStateToProp = (state) => {
+  return {
+    project_list: state.project_list,
+    project_details: state.project_details
+  }
+}
+
+export default connect(mapStateToProp)(Projects)

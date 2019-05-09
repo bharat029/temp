@@ -1,0 +1,16 @@
+[
+    {
+        "p-title" : "Project 0",
+        "p-demo" : "https://www.youtube.com/embed/40pWMVMnftc",
+        "p-desc" : ["Project Description fro project 1"],
+        "p-high" : ["Project Highlights 1", "Project Highlights 2", "Project Highlights 3", "Project Highlights 4"],
+        "p-repo" : "#"
+    },
+    {
+        "p-title" : "Project 1",
+        "p-demo" : "https://www.youtube.com/embed/tb8gHvYlCFs",
+        "p-desc" : ["Project Description"],
+        "p-high" : ["Project Highlights 1", "Project Highlights 2", "Project Highlights 3"],
+        "p-repo" : "#"
+    }
+]

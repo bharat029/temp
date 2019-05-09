@@ -1,6 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default function CV() {
+const CV = ({ cv }) => {
   function getStr(data, first) {
     var res = "<dl>";
     for(let key in data){
@@ -48,7 +49,7 @@ export default function CV() {
     <div className="page">
       <h2 id="page-title">CV</h2>
       <div id="page-content">
-        <div id='cv' dangerouslySetInnerHTML={{__html: getStr(require('../pages/cv.json'), true)}} />
+        <div id='cv' dangerouslySetInnerHTML={{__html: getStr(cv, true)}} />
         <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
         <div id='download-btn-container'>
           <a href={require('../files/Resume.pdf')} rel="noopener noreferrer" className='btn btn-primary' target='_blank'>
@@ -60,3 +61,11 @@ export default function CV() {
     </div>
   )
 }
+
+const mapStateToProp = (state) => {
+  return {
+    cv: state.cv
+  }
+}
+
+export default connect(mapStateToProp)(CV)

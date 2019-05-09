@@ -1,8 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default function AboutMe() {
-  const aboutme = require('../pages/aboutMe.json')
-  return (
+const AboutMe = ({ aboutme }) => {
+    return (
     <div className="page">
       <h2 id="page-title">About Me</h2>
       <div id="page-content">
@@ -18,3 +18,10 @@ export default function AboutMe() {
   )
 }
 
+const mapStateToProp = (state) => {
+  return {
+    aboutme: state.aboutme
+  }
+}
+
+export default connect(mapStateToProp)(AboutMe)

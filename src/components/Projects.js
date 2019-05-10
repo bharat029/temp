@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ProjectPopUp from './ProjectPopUp'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import axios from 'axios'
 
 class Projects extends Component {
   constructor(props) {
@@ -34,12 +33,8 @@ class Projects extends Component {
   }
 
   render() {
-
-    axios.get("http://localhost:0080/LearnPHP/").then((result) => console.log(result.data))
-
     const project_list = this.props.projects.map(project => project['p-title'])
     const { project } = this.state
-    document.title = 'Projects - Kunjal Panchal'
 
     return (
       <>

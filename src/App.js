@@ -20,7 +20,7 @@ class App extends Component {
         <HashRouter>
           <SideBar />
           <div className="col-md-9" id="main-content">
-          <Route exact path="/" component={Aboutme} />
+            <Route exact path="/" component={Aboutme} />
             <Route path="/projects" component={Projects} />
             <Route path="/cv" component={Cv} />
             <br /><br /><br />

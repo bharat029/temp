@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Me from './imgs/me.png'
@@ -32,13 +31,13 @@ export default function SideBar() {
         <div id="contact" className="row">
         <ul className="contact-info">
             <li>
-                <a href="mailto:kunjalspanchal@gmail.com" className="fa fa-envelope-square"></a>
+                <a href="mailto:kunjalspanchal@gmail.com" className="fa fa-envelope-square"><span>E-mail</span></a>
             </li>
             <li>
-                <a href="https://in.linkedin.com/in/kunjal-panchal-07a0b514b" className="fa fa-linkedin"></a>
+                <a href="https://in.linkedin.com/in/kunjal-panchal-07a0b514b" className="fa fa-linkedin"><span>Linkedin</span></a>
             </li>
             <li>
-                <a href="https://github.com/astuary" className="fa fa-github"></a>
+                <a href="https://github.com/astuary" className="fa fa-github"><span>Github</span></a>
             </li>
         </ul>
         </div>

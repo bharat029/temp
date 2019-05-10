@@ -169,6 +169,10 @@
   text-decoration: none;
 }
 
+.contact-info a > span {
+  font-size: 0px;
+}
+
 .fa-github {
   background: #211f1f ;
 }

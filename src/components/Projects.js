@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ProjectPopUp from './ProjectPopUp'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
+import axios from 'axios'
 
 class Projects extends Component {
   constructor(props) {
@@ -33,6 +34,9 @@ class Projects extends Component {
   }
 
   render() {
+
+    axios.get("http://localhost:0080/LearnPHP/").then((result) => console.log(result.data))
+
     const project_list = this.props.projects.map(project => project['p-title'])
     const { project } = this.state
     document.title = 'Projects - Kunjal Panchal'
@@ -46,7 +50,7 @@ class Projects extends Component {
           <h2 id="page-title">Project Section</h2>
           <div id="page-content">
             <div id="proj-wrapper" className="row no-gutters">
-              {project_list.map((proj, idx) => <div key={idx} className="col-lg-3 col-md-4 col-sm-6 col-12"><img className="project-button" onClick={this.btnClick} src={require('../imgs/' + proj +'.png')} alt={proj} /></div>)}
+              {project_list.map((proj, idx) => <div key={idx} area-roll="button" className="col-lg-3 col-md-4 col-sm-6 col-12"><img className="project-button" onClick={this.btnClick} src={require('../imgs/' + proj +'.png')} alt={proj} /></div>)}
             </div>
             {
               !project ? 

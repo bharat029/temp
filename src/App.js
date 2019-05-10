@@ -7,7 +7,6 @@ import Aboutme from './components/AboutMe'
 import Projects from './components/Projects'
 import Cv from './components/CV'
 
-
 class App extends Component {
   toggleSidebar = (e) => {
     setTimeout(() => {
@@ -24,6 +23,7 @@ class App extends Component {
           <Route exact path="/" component={Aboutme} />
             <Route path="/projects" component={Projects} />
             <Route path="/cv" component={Cv} />
+            <br /><br /><br />
           </div>
           <button className="d-md-none" onClick={this.toggleSidebar} id="toggle-menu"><i className="fa fa-bars"></i></button>
         </HashRouter>

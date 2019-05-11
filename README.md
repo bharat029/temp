@@ -29,11 +29,11 @@ You will find the corresponding aboutMe.json and cv.json inside the `src/pages` 
 
 * You need to enter your Project title and other details regarding your projects in the projects.json file again in the `src/pages` folder.
 * For the embeded iframe (youtube video) you only need to enter the code of the your youtube video, E.g. on opening your video in youtube the url would look like `https://www.youtube.com/watch?v=yXY3f9jw7fg` you only need to enter `yXY3f9jw7fg` to add it to the popup.
-* Also for the project images need to be saved with thhe same name as the the project title with a `.png` extension in the `src/imgs` folder.
+* Also for the project images, they need to be saved with the same name as the the project title with a `.png` extension in the `src/imgs` folder.
 
 ## Deploying Your Website
 
-To be able to deploy this website you'll need to install `node js` you can download it from [here](www.nodejs.org).
+To be able to deploy this website you'll need to install `node js` you can download it from [here](https://www.nodejs.org).
 * Installing all the dependencies
 
     After you cd into this folder inyour terminal run:

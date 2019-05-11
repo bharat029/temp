@@ -210,6 +210,10 @@
   border-radius: 2%;
 }
 
+#project-content dt {
+  padding-left: 2.5%;
+}
+
 /* Popup close button style */
 #close {
   color: white;

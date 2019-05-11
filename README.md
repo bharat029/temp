@@ -1,68 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#React Based Stari Portfolio Website
 
-## Available Scripts
+This is a simple generic portfolio website.
 
-In the project directory, you can run:
+##Components And Structure
 
-### `npm start`
+This website has the following components: 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Sidebar
+* About Me
+* Projects
+* Project's Popup
+* CV
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Apart from Sidebar wich appears on every page the rest of the components represent specific sections of the website.
 
-### `npm test`
+##Where to add your info?
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###Your Image And Resume
 
-### `npm run build`
+* You need to save your image in the `src/imgs` folder by the name `me.png`.
+* You need to save your resume in the `src/files` folder by the name `Resume.pdf`.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###Your AboutMe And CV Section's Info
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+You will find the corresponding aboutMe.json and cv.json inside the `src/pages` folder.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+###Your Projects Section
 
-### `npm run eject`
+* You need to enter your Project title and other details regarding your projects in the projects.json file again in the `src/pages` folder.
+* For the embeded iframe (youtube video) you only need to enter the code of the your youtube video, E.g. on opening your video in youtube the url would look like `https://www.youtube.com/watch?v=yXY3f9jw7fg` you only need to enter `yXY3f9jw7fg` to add it to the popup.
+* Also for the project images need to be saved with thhe same name as the the project title with a `.png` extension in the `src/imgs` folder.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##Deploying Your Website
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To be able to deploy this website you'll need to install `node js` you can download it from [here](www.nodejs.org).
+* Installing all the dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    After you cd into this folder inyour terminal run:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    `npm install`
 
-## Learn More
+* This website assumes that you are deploying it on Github Pages in which case you need to edit the homepage in the package.json folder to be of the form `https://www.your_github_username.github.io/the_name_of_your_repository`.  Now run `npm run deploy` this will deploy your website to your homwpage.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* If you dont want to host it from Github then remove the homepage and deploy and predeploy scripts in the package.json and run `npm run build`. This would create an optimised version of your website inside the build folder. Now you can use this build folder to host your website from anywhere.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

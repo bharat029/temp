@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './bootstrap-grid.min.css';
 import './App.css';
-import SideBar from './SideBar'
+import SideBar from './components/SideBar'
 import {HashRouter, Route} from 'react-router-dom'
 import Aboutme from './components/AboutMe'
 import Projects from './components/Projects'

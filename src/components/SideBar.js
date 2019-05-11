@@ -1,9 +1,9 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import Me from './imgs/me.png'
+import Me from '../imgs/me.png'
+import { connect } from 'react-redux'
 
-export default function SideBar() {
-
+const SideBar = ({ name, one_line_descrtiption, email, linkedin, github }) => {
     const clickHandler = (e) => {
         document.getElementById('wrapper').classList.remove('menuDisplayed')
     }
@@ -12,8 +12,8 @@ export default function SideBar() {
     <div className="col-md-3 d-md-block" id="sidebar">
         <div id="me" className="row">
         <img src={Me} alt="Kunjal Panchal" />
-        <h1>Kunjal Panchal</h1>
-        <p>Computer Science Major</p>
+        <h1>{ name }</h1>
+        <p>{ one_line_descrtiption }</p>
         </div>
         <div id="navi" className="row">
         <ul className="navi">
@@ -31,16 +31,28 @@ export default function SideBar() {
         <div id="contact" className="row">
         <ul className="contact-info">
             <li>
-                <a href="mailto:kunjalspanchal@gmail.com" className="fa fa-envelope-square"><span>E-mail</span></a>
+                <a href={ "mailto:" + email } className="fa fa-envelope-square"><span>E-mail</span></a>
             </li>
             <li>
-                <a href="https://in.linkedin.com/in/kunjal-panchal-07a0b514b" className="fa fa-linkedin"><span>Linkedin</span></a>
+                <a href={ linkedin } className="fa fa-linkedin"><span>Linkedin</span></a>
             </li>
             <li>
-                <a href="https://github.com/astuary" className="fa fa-github"><span>Github</span></a>
+                <a href={ github } className="fa fa-github"><span>Github</span></a>
             </li>
         </ul>
         </div>
     </div>
     )
 }
+
+const mapStateToProp = (state) => {
+    return {
+      name: state.aboutme.name,
+      one_line_descrtiption: state.aboutme.one_line_descrtiption,
+      email: state.aboutme.email,
+      linkedin: state.aboutme.linkedin,
+      github: state.aboutme.github
+    }
+  }
+  
+  export default connect(mapStateToProp)(SideBar)

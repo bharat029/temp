@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-const AboutMe = ({ aboutme }) => {
+const AboutMe = ({ aboutme, email }) => {
     return (
     <>
       <Helmet>
@@ -16,7 +16,7 @@ const AboutMe = ({ aboutme }) => {
           }
         </div>
         <br></br>
-        <p>E-mail:  <a id="email" href="mailto:kunjalspanchal@gmail.com">kunjalspanchal@gmail.com</a></p>
+        <p>E-mail:  <a id="email" href={ "mailto:" + email}>{ email }</a></p>
         <br></br>
         <br></br>
       </div>  
@@ -26,7 +26,8 @@ const AboutMe = ({ aboutme }) => {
 
 const mapStateToProp = (state) => {
   return {
-    aboutme: state.aboutme
+    aboutme: state.aboutme.aboutme,
+    email: state.aboutme.email
   }
 }
 

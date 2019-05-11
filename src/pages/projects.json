@@ -21,14 +21,14 @@
         "p-repo" : "#"
     },
     {
-        "p-title" : "A \"Tetris\" game in Borland Graphics Interface",
+        "p-title" : "A Tetris game in Borland Graphics Interface",
         "p-demo" : "tb8gHvYlCFs",
         "p-desc" : ["A classic game's adaptation to implement the basic graphics primitives. Learned how to do mouse + keyboard input interfacing The rasterized graphics implementation from the very basic \"line\" functions was the goal achieved successfully"],
         "p-high" : ["Speed Changer", "Color and Shape both can be randomized"],
         "p-repo" : "#"
     },
     {
-        "p-title" : "Google Developer's Student Club",
+        "p-title" : "Google Developers Student Club",
         "p-demo" : "tb8gHvYlCFs",
         "p-desc" : ["Putting our campus among other 183 from across India."],
         "p-high" : ["Main tasks were to spread awareness about IoT to the businessman and the people having small enterprises so that they can efficiently incorporate Internet in their business, for better yield.", "To teach basic computational tasks to elderly; like paying bills online, making spreadsheets to keep track of their shopping lists etc"],

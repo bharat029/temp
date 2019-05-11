@@ -1,16 +1,51 @@
 [
     {
-        "p-title" : "Project 0",
+        "p-title" : "Medical Image Processing on Skin Cancer",
         "p-demo" : "yXY3f9jw7fg",
-        "p-desc" : ["Project Description fro project 1"],
-        "p-high" : ["Project Highlights 1", "Project Highlights 2", "Project Highlights 3", "Project Highlights 4"],
+        "p-desc" : ["Two methods to detect skin cancer from dermatoscopic images of carcinogenic moles are examined: one is of unsupervised learning where we process the image using its visual characteristics and the other one is of supervised learning where we use a neural network to learn decision paths for either the image is malignant or benign and then input any new/ different image to make decision."],
+        "p-high" : ["The image processing part has pre-processing section where we remove hair or scale marks from the image", "Otsu Thresholding for Region of Interest Segmentation", "Euclidean Distance and Dice-Sorenson Co-efficient for Asymmetricity and Border Irregularity measurements", "Histogram Analysis for Color Detection"],
         "p-repo" : "#"
     },
     {
-        "p-title" : "Project 1",
+        "p-title" : "A Study and Library Student Portal - Web Learning System",
         "p-demo" : "tb8gHvYlCFs",
-        "p-desc" : ["Project Description"],
-        "p-high" : ["Project Highlights 1", "Project Highlights 2", "Project Highlights 3"],
+        "p-desc" : ["Web-based learning system is initiated to make an online learning platform where universities and the professors can register as “content-creators” who put the content of their syllabus online on the site. The students, after verification is done, can view the content as a “content-viewer”, making it easier for students to gain insight into professors’ personal notes and making learning more fun and interactive than just classroom or textbook learning."],
+        "p-high" : ["Java Network Launch Protocol for Web-based Swing Applications", "Obfuscation", "AjaxSwing to run Web-based Swing Applications on Mobile Phone Browsers", "Separate Client and Server Batch Configuration Programs"],
+        "p-repo" : "#"
+    },
+    {
+        "p-title" : "Vector Graphics Editor",
+        "p-demo" : "tb8gHvYlCFs",
+        "p-desc" : ["A graphics editor just like MS Paint but not rasterized, it didn't store the bitmap but the vectors on the canvas. Implemented all the basic functions provided in a graphics editor eg. Move, Scale, Rotate, Change color, Fill color, Save, Open. The whole editor is made for Borland Graphics Interface in C"],
+        "p-high" : ["Pattern and Color Fill", "Rubberbanding", "Keyboard and Mouse Input"],
+        "p-repo" : "#"
+    },
+    {
+        "p-title" : "A \"Tetris\" game in Borland Graphics Interface",
+        "p-demo" : "tb8gHvYlCFs",
+        "p-desc" : ["A classic game's adaptation to implement the basic graphics primitives. Learned how to do mouse + keyboard input interfacing The rasterized graphics implementation from the very basic \"line\" functions was the goal achieved successfully"],
+        "p-high" : ["Speed Changer", "Color and Shape both can be randomized"],
+        "p-repo" : "#"
+    },
+    {
+        "p-title" : "Google Developer's Student Club",
+        "p-demo" : "tb8gHvYlCFs",
+        "p-desc" : ["Putting our campus among other 183 from across India."],
+        "p-high" : ["Main tasks were to spread awareness about IoT to the businessman and the people having small enterprises so that they can efficiently incorporate Internet in their business, for better yield.", "To teach basic computational tasks to elderly; like paying bills online, making spreadsheets to keep track of their shopping lists etc"],
+        "p-repo" : "#"
+    },
+    {
+        "p-title" : "Battleship Desktop Game",
+        "p-demo" : "tb8gHvYlCFs",
+        "p-desc" : ["Another classic board game adaptation made purely in JAVA"],
+        "p-high" : ["Implemented multithreading for sound and animations", "Polymorphism for Player vs Player and Player vs Computer"],
+        "p-repo" : "#"
+    },
+    {
+        "p-title" : "Zombie Game",
+        "p-demo" : "tb8gHvYlCFs",
+        "p-desc" : ["A Roguelike Game"],
+        "p-high" : ["Implemented multithreading for sound and animations", "Polymorphism for Player vs Player and Player vs Computer"],
         "p-repo" : "#"
     }
 ]

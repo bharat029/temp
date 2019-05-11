@@ -18,6 +18,7 @@ Apart from Sidebar wich appears on every page the rest of the components represe
 
 ### Your Image And Resume
 
+* Replace the `favicon.ico` in the `public` folder with your custom favicon.  
 * You need to save your image in the `src/imgs` folder by the name `me.png`.
 * You need to save your resume in the `src/files` folder by the name `Resume.pdf`.
 

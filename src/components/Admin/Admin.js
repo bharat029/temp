@@ -5,6 +5,7 @@ import { addAboutMe, updateAboutMe, deleteAboutMe } from '../../store/actions/ab
 import { addProject, updateProject, deleteProject } from '../../store/actions/projectActions'
 import { addEducation, updateEducation, deleteEducation, addCertificate, updateCertificate, deleteCertificate, addSoftware, updateSoftware, deleteSoftware, addInterest, updateInterest, deleteInterest } from '../../store/actions/cvActions'
 import { updatePersonalDetails } from '../../store/actions/personal_detailsActions'
+import { signIn } from '../../store/actions/authActions'
 import AboutMe from './Forms/AboutMe'
 import Project from './Forms/Project'
 import Education from './Forms/Education'
@@ -20,7 +21,8 @@ class Admin extends Component {
     super(props)
   
     this.state = {
-       logged_in: true,
+       logged_in: false,
+       authError: null,
        display: 'aboutme',
        data: null,
        idx: null
@@ -30,17 +32,22 @@ class Admin extends Component {
   submited = event => {
     event.preventDefault()
     
+    let credentials = {}
+
     event.target.childNodes.forEach(ele => {
-      if(ele.id !== 'submit'){
-        console.log(ele.childNodes[1].name + ': ' + ele.childNodes[1].value)
+      if(ele.id !== 'submit' && ele.id !== 'alert'){
+        credentials[ele.childNodes[1].id] = ele.childNodes[1].value
       }
     })
 
+    this.props.signIn(credentials)
+    
     this.setState({
-      logged_in: true,
+      logged_in: this.props.success,
+      authError: this.props.authError,
       display: 'aboutme'
     })
-  }
+}
 
   clickHanfler = (e) => {
     this.setState({
@@ -298,16 +305,17 @@ class Admin extends Component {
               <ul className="list-unstyled">{ this.display(this.state.display) }</ul>
             </div>:
             <form method="post" onSubmit={this.submited} className="col-5 offset-1" action="">
+              { this.props.authError && <div id="alert" class="alert alert-danger" role="alert">{ this.props.authError }</div> }
               <div className="form-group">
-                <label htmlFor="username">Username:</label>
-                <input type="text" className="form-control" placeholder="Username" name="username" id="username" />
+                <label htmlFor="email">Email:</label>
+                <input type="text" className="form-control" placeholder="Email" name="email" id="email" />
               </div>
               <div className="form-group">
-                <label htmlFor="pwd">Password:</label>
-                <input type="password" className="form-control" placeholder="Password"  name="pwd" id="pwd" />
+                <label htmlFor="password">Password:</label>
+                <input type="password" className="form-control" placeholder="Password"  name="password" id="password" />
               </div>
               <div id='submit' className="form-group col-12 text-center">
-                  <button type="submit" className="btn btn-success pl-0 pr-0 text-center col-4">Submit</button>
+                  <button type="submit" className="btn btn-success pl-0 pr-0 text-center col-4">Sign In</button>
               </div>
             </form>
           }
@@ -320,6 +328,8 @@ class Admin extends Component {
 
 const mapStateToProp = (state) => {
   return {
+    authError: state.auth.authError,
+    success: state.auth.success,
     aboutme: state.firestore.ordered.aboutme,
     projects: state.firestore.ordered.projects,
     education: state.firestore.ordered.education,
@@ -350,7 +360,8 @@ const mapDispatchToProp = dispatch => {
     addInterest: (inte) => dispatch(addInterest(inte)),
     updateInterest: (inte, idx) => dispatch(updateInterest(inte, idx)),
     deleteInterest: (idx) => dispatch(deleteInterest(idx)),
-    updatePersonalDetails: (details) => dispatch(updatePersonalDetails(details))
+    updatePersonalDetails: (details) => dispatch(updatePersonalDetails(details)),
+    signIn: (credentials) => dispatch(signIn(credentials))
   }
 }
 

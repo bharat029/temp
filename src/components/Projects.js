@@ -78,7 +78,7 @@ const mapStateToProp = (state) => {
 export default compose(
   connect(mapStateToProp),
   firestoreConnect([
-    { collection: 'projects' },
+    { collection: 'projects', orderby: ['createdOn', 'desc'] },
     { collection: 'personal_details' }
   ])
 )(Projects)

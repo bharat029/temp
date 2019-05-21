@@ -18,7 +18,9 @@ class Project extends Component {
   submitHnadler = e => {
     e.preventDefault()
 
-    let project = {}
+    let project = {
+      createdOn: new Date()
+    }
 
     e.target.childNodes.forEach(ele => {
       if(ele.id !== 'submit' && ele.childNodes[1].id !== 'img'){

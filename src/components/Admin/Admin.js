@@ -61,9 +61,9 @@ class Admin extends Component {
     switch (this.state.display) {
       case "aboutmeform":
         if(this.state.data){
-          this.props.updateAboutMe({abtme: e.target.childNodes[0].childNodes[1].value}, this.state.idx)
+          this.props.updateAboutMe({abtme: e.target.childNodes[0].childNodes[1].value, createdOn: new Date() }, this.state.idx)
         } else {
-          this.props.addAboutMe({abtme: e.target.childNodes[0].childNodes[1].value})
+          this.props.addAboutMe({abtme: e.target.childNodes[0].childNodes[1].value, createdOn: new Date() })
         }
   
         this.setState({
@@ -85,6 +85,8 @@ class Admin extends Component {
             edu[ 'e-' + ele.childNodes[1].id] = ele.childNodes[1].value
           }
         })
+
+        edu['createdOn'] = new Date()
         
         if(this.state.data){
           this.props.updateEducation(edu, this.state.idx)
@@ -105,6 +107,8 @@ class Admin extends Component {
             certi[ 'c-' + ele.childNodes[1].id] = ele.childNodes[1].value
           }
         })
+
+        certi['createdOn'] = new Date()
         
         if(this.state.data){
           this.props.updateCertificate(certi, this.state.idx)
@@ -119,9 +123,9 @@ class Admin extends Component {
         break
       case "softwareform":
         if(this.state.data){
-          this.props.updateSoftware({sft: e.target.childNodes[0].childNodes[1].value}, this.state.idx)
+          this.props.updateSoftware({sft: e.target.childNodes[0].childNodes[1].value, createdOn: new Date()}, this.state.idx)
         } else {
-          this.props.addSoftware({sft: e.target.childNodes[0].childNodes[1].value})
+          this.props.addSoftware({sft: e.target.childNodes[0].childNodes[1].value, createdOn: new Date()})
         }
       
         this.setState({
@@ -137,7 +141,9 @@ class Admin extends Component {
             inte[ 'i-' + ele.childNodes[1].id] = ele.childNodes[1].value
           }
         })
-        
+
+        inte['createdOn'] = new Date()
+
         if(this.state.data){
           this.props.updateInterest(inte, this.state.idx)
         } else {
@@ -368,12 +374,12 @@ const mapDispatchToProp = dispatch => {
 export default compose(
   connect(mapStateToProp, mapDispatchToProp),
   firestoreConnect([
-    { collection: 'projects' },
-    { collection: 'aboutme' },
+    { collection: 'projects', orderby: ['createdOn', 'desc'] },
+    { collection: 'aboutme', orderby: ['createdOn'] },
     { collection: 'personal_details' }, 
-    { collection: 'education' },
-    { collection: 'certificate' },
-    { collection: 'software' },
-    { collection: 'interest' }
+    { collection: 'education', orderby: ['createdOn', 'desc'] },
+    { collection: 'certificate', orderby: ['createdOn', 'desc'] },
+    { collection: 'software', orderby: ['createdOn', 'desc'] },
+    { collection: 'interest', orderby: ['createdOn', 'desc'] }
   ])
 )(Admin)

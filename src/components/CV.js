@@ -113,10 +113,10 @@ const mapStateToProp = (state) => {
 export default compose(
   connect(mapStateToProp),
   firestoreConnect([
-    { collection: 'education' },
-    { collection: 'certificate' },
-    { collection: 'software' },
-    { collection: 'interest' },
-    { collection: 'personal_details', doc: 'lE3v2t3lrWU24ji6lRqM' }
+    { collection: 'education', orderby: ['createdOn', 'desc'] },
+    { collection: 'certificate', orderby: ['createdOn', 'desc'] },
+    { collection: 'software', orderby: ['createdOn', 'desc'] },
+    { collection: 'interest', orderby: ['createdOn', 'desc'] },
+    { collection: 'personal_details' }
   ])
 )(CV)

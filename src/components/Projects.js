@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import ProjectPopUp from './ProjectPopUp'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 
 class Projects extends Component {
   constructor(props) {
@@ -33,19 +35,26 @@ class Projects extends Component {
   }
 
   render() {
-    const project_list = this.props.projects.map(project => project['p-title'])
+    const { projects, fname, lname } = this.props
     const { project } = this.state
 
     return (
       <>
         <Helmet>
-          <title>Projects - Kunjal Panchal</title>
+          {
+            fname && lname ? <title>Project - {fname + " " + lname} </title> 
+            : <title>Project - </title>
+          }
         </Helmet>
         <div className="page">
           <h2 id="page-title">Project Section</h2>
           <div id="page-content">
             <div id="proj-wrapper" className="row no-gutters">
-              {project_list.map((proj, idx) => <div key={idx} area-roll="button" className="col-lg-3 col-md-4 col-sm-6 col-12"><img className="project-button" onClick={this.btnClick} src={require('../imgs/' + proj +'.png')} alt={proj} /></div>)}
+              {
+                projects ? 
+                projects.map((proj, idx) => <div key={proj.id} area-roll="button" className="col-lg-3 col-md-4 col-sm-6 col-12"><img className="project-button" onClick={this.btnClick} src={proj['p-img']} alt={proj['p-title']} /></div>) : 
+                <p>Loading Data... Please wsit!!</p>
+              }
             </div>
             {
               !project ? 
@@ -60,8 +69,16 @@ class Projects extends Component {
 
 const mapStateToProp = (state) => {
   return {
-    projects: state.projects
+    fname: state.firestore.ordered.personal_details ? state.firestore.ordered.personal_details[0].fname : null,
+    lname: state.firestore.ordered.personal_details ? state.firestore.ordered.personal_details[0].lname : null,
+    projects: state.firestore.ordered.projects,
   }
 }
 
-export default connect(mapStateToProp)(Projects)
+export default compose(
+  connect(mapStateToProp),
+  firestoreConnect([
+    { collection: 'projects' },
+    { collection: 'personal_details' }
+  ])
+)(Projects)

@@ -10,16 +10,18 @@ export default function ProjectPopUp({project, closePopUp}) {
         <dl>
             <dt><h4>Description:</h4></dt>
             <dd id="p-desc">
-            {
-                project['p-desc'].map((desc, idx) => <p key={idx}>{desc}</p>)
-            }
+                { project['p-desc-1'] && <p>{ project['p-desc-1'] }</p>}
+                { project['p-desc-2'] && <p>{ project['p-desc-2'] }</p>}
+                { project['p-desc-3'] && <p>{ project['p-desc-3'] }</p>}
             </dd>
             <dt><h4>Highlights: </h4></dt>
             <dd>
             <ul id="p-high">
-                {
-                project['p-high'].map((highl, idx) => <li key={idx}>{highl}</li>)
-                }
+                { project['p-high-1'] && <li>{ project['p-high-1'] }</li>}
+                { project['p-high-2'] && <li>{ project['p-high-2'] }</li>}
+                { project['p-high-3'] && <li>{ project['p-high-3'] }</li>}
+                { project['p-high-4'] && <li>{ project['p-high-4'] }</li>}
+                { project['p-high-5'] && <li>{ project['p-high-5'] }</li>}
             </ul>
             </dd>
         </dl>

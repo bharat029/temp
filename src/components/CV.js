@@ -1,63 +1,93 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 
-const CV = ({ cv }) => {
-  function getStr(data, first) {
-    var res = "<dl>";
-    for(let key in data){
-      if(!first){
-        res += "<li>";
-      }
-      
-      if(Array.isArray(data[key])){
-        if(key === "Softwares Games") {
-          res += "<dt><i class='fa fa-gamepad'></i> " + key + "</dt><dd><ul>" + getUlStr(data[key]) + "<ul></dd>";
-        } else {
-          res += "<dt>" + key + "</dt><dd><ul>" + getUlStr(data[key]) + "<ul></dd>";
-        }
-      } else if(typeof data[key] === "string"){
-        res += "<dt>" + key + "</dt><dd><ul>" + data[key] + "<ul></dd>";
-      } else {
-        if(key === "Education") {
-          res += "<dt><i class='fa fa-graduation-cap'></i> " + key + "</dt><dd><ul>" + getStr(data[key]) + "<ul></dd>";
-        } else if(key === "Certificates") {
-          res += "<dt><i class='fa fa-drivers-license-o	'></i> " + key + "</dt><dd><ul>" + getStr(data[key]) + "<ul></dd>";
-        } else if(key === "Interests") {
-          res += "<dt><i class='fa fa-street-view'></i> " + key + "</dt><dd><ul>" + getStr(data[key]) + "<ul></dd>";
-        } else {
-          res += "<dt>" + key + "</dt><dd><ul>" + getStr(data[key]) + "<ul></dd>";
-        }
-      }
-  
-      if(!first){
-        res += "</li>";
-      }
-    }
-    return res + "</dl>";
-  }
-  
-  function getUlStr (arr) {
-    var res = "<ul>";
-  
-    for(let ele of arr){
-      res += "<li>" + ele + "</li>"
-    }
-    return res + "</ul>";
-  }
-
+const CV = ({ education, certificate, software, interest, fname, lname, resume }) => {
   return (
     <>
       <Helmet>
-        <title>CV - Kunjal Panchal</title>
+        {
+          fname && lname ? <title>CV - {fname + " " + lname} </title> 
+          : <title>CV - </title>
+        }
       </Helmet>
       <div className="page">
         <h2 id="page-title">CV</h2>
         <div id="page-content">
-          <div id='cv' dangerouslySetInnerHTML={{__html: getStr(cv, true)}} />
+          <div id='cv'>
+            <dl>
+              <dt className="mb-2"><i className='fa fa-graduation-cap' /> Education</dt>
+              <dd>
+                <dl>
+                {
+                    education ?
+                    education.map((edu, idx) =>
+                    <div key={edu.id}>
+                      <dt>{ edu['e-title'] }</dt>
+                      <dd className="pl-5">
+                        <ul>
+                        { edu['e-desc-1'] && <li>{ edu['e-desc-1'] }</li>}
+                        { edu['e-desc-2'] && <li>{ edu['e-desc-2'] }</li>}
+                        { edu['e-desc-3'] && <li>{ edu['e-desc-3'] }</li>}
+                        { edu['e-desc-4'] && <li>{ edu['e-desc-4'] }</li>}
+                        { edu['e-desc-5'] && <li>{ edu['e-desc-5'] }</li>}
+                        </ul>
+                      </dd>
+                    </div>
+                    )
+                    : <p>Loading Data... Please wait!!</p>
+                  }
+                </dl>
+              </dd>
+              <dt className="mb-2"><i className='fa fa-drivers-license-o	' /> Certificates</dt>
+              <dd>
+                <dl>
+                {
+                    certificate ?
+                    certificate.map((certi, idx) =>
+                    <div key={certi.id}>
+                      <dt>{ certi['c-title'] }</dt>
+                      <dd className="pl-5">{ certi['c-desc'] }</dd>
+                    </div>
+                    )
+                    : <p>Loading Data... Please wait!!</p>
+                  }
+                </dl>
+              </dd>
+              <dt className="mb-2"><i className='fa fa-gamepad' /> Software Games</dt>
+              <dd>
+                <ul>
+                {
+                    software ?
+                    software.map((sft, idx) =>
+                      <li key={sft.id} className="mt-0">{ sft.sft }</li>
+                    )
+                    : <p>Loading Data... Please wait!!</p>
+                  }
+                </ul>
+              </dd>
+              <dt className="mb-2"><i className='fa fa-street-view' /> Interests</dt>
+              <dd>
+                <dl>
+                {
+                    interest ?
+                    interest.map((inte, idx) =>
+                    <div key={inte.id}>
+                      <dt>{ inte['i-title'] }</dt>
+                      <dd className="pl-5">{ inte['i-desc'] }</dd>
+                    </div>
+                    )
+                    : <p>Loading Data... Please wait!!</p>
+                  }
+                </dl>
+              </dd>
+            </dl>
+          </div>
           <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
           <div id='download-btn-container'>
-            <a href={require('../files/Resume.pdf')} rel="noopener noreferrer" className='btn btn-primary' target='_blank'>
+            <a href={resume ? resume : '#'} rel="noopener noreferrer" className='btn btn-primary' target='_blank'>
               <i className='fa fa-download'></i> Download CV
             </a>
           </div>
@@ -70,8 +100,23 @@ const CV = ({ cv }) => {
 
 const mapStateToProp = (state) => {
   return {
-    cv: state.cv
+    fname: state.firestore.ordered.personal_details ? state.firestore.ordered.personal_details[0].fname : null,
+    lname: state.firestore.ordered.personal_details ? state.firestore.ordered.personal_details[0].lname : null,
+    resume: state.firestore.ordered.personal_details ? state.firestore.ordered.personal_details[0].resume : null,
+    education: state.firestore.ordered.education,
+    certificate: state.firestore.ordered.certificate,
+    software: state.firestore.ordered.software,
+    interest: state.firestore.ordered.interest,
   }
 }
 
-export default connect(mapStateToProp)(CV)
+export default compose(
+  connect(mapStateToProp),
+  firestoreConnect([
+    { collection: 'education' },
+    { collection: 'certificate' },
+    { collection: 'software' },
+    { collection: 'interest' },
+    { collection: 'personal_details', doc: 'lE3v2t3lrWU24ji6lRqM' }
+  ])
+)(CV)

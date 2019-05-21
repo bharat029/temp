@@ -1,9 +1,10 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import Me from '../imgs/me.png'
 import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 
-const SideBar = ({ name, one_line_descrtiption, email, linkedin, github }) => {
+const SideBar = ({ personal_details }) => {
     const clickHandler = (e) => {
         document.getElementById('wrapper').classList.remove('menuDisplayed')
     }
@@ -11,9 +12,9 @@ const SideBar = ({ name, one_line_descrtiption, email, linkedin, github }) => {
     return (
     <div className="col-md-3 d-md-block" id="sidebar">
         <div id="me" className="row">
-        <img src={Me} alt="Kunjal Panchal" />
-        <h1>{ name }</h1>
-        <p>{ one_line_descrtiption }</p>
+        <img src={personal_details ? personal_details.img : null} alt={personal_details ? personal_details.fname + " " + personal_details.lname : null } />
+        <h1>{ personal_details ? personal_details.fname + " " + personal_details.lname : null }</h1>
+        <p>{ personal_details ? personal_details.desc : null }</p>
         </div>
         <div id="navi" className="row">
         <ul className="navi">
@@ -31,13 +32,13 @@ const SideBar = ({ name, one_line_descrtiption, email, linkedin, github }) => {
         <div id="contact" className="row">
         <ul className="contact-info">
             <li>
-                <a href={ "mailto:" + email } className="fa fa-envelope-square"><span>E-mail</span></a>
+                <a href={ personal_details ? "mailto:" + personal_details.email : "#" } className="fa fa-envelope-square"><span>E-mail</span></a>
             </li>
             <li>
-                <a href={ linkedin } className="fa fa-linkedin"><span>Linkedin</span></a>
+                <a href={ personal_details ? personal_details.linkedin : "#" } className="fa fa-linkedin"><span>Linkedin</span></a>
             </li>
             <li>
-                <a href={ github } className="fa fa-github"><span>Github</span></a>
+                <a href={ personal_details ? personal_details.github : "#" } className="fa fa-github"><span>Github</span></a>
             </li>
         </ul>
         </div>
@@ -47,12 +48,14 @@ const SideBar = ({ name, one_line_descrtiption, email, linkedin, github }) => {
 
 const mapStateToProp = (state) => {
     return {
-      name: state.aboutme.name,
-      one_line_descrtiption: state.aboutme.one_line_descrtiption,
-      email: state.aboutme.email,
-      linkedin: state.aboutme.linkedin,
-      github: state.aboutme.github
+        personal_details: state.firestore.ordered.personal_details ? state.firestore.ordered.personal_details[0] : null,
     }
   }
   
-  export default connect(mapStateToProp)(SideBar)
+  export default compose(
+    connect(mapStateToProp),
+    firestoreConnect([
+      { collection: 'personal_details' }
+    ])
+  )(SideBar)
+  

@@ -1,12 +1,21 @@
-export const signIn = credentials => {
+export const signIn = (credentials) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
-    const firebase = getFirebase()
-
-    firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
-        .then(() => {
+        const firebase = getFirebase()
+        
+        firebase.auth().signInWithEmailAndPassword(
+            credentials.email, 
+            credentials.password
+        ).then(() => {
             dispatch({ type: "LOGIN_SUCCESS" })
-        }).catch(err => {
+        }).catch((err) => {
             dispatch({ type: "LOGIN_ERROR", err })
         })
+    }
+}
+
+export const signOut = () => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase()
+    firebase.auth().signOut().catch(() => {})
     }
 }

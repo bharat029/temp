@@ -6,6 +6,7 @@ import Aboutme from './components/AboutMe'
 import Projects from './components/Projects'
 import Cv from './components/CV'
 import Admin from './components/Admin/Admin'
+import SignIn from './components/Admin/SignIn'
 
 class App extends Component {
   toggleSidebar = (e) => {
@@ -24,6 +25,7 @@ class App extends Component {
             <Route path="/projects" component={Projects} />
             <Route path="/cv" component={Cv} />
             <Route path="/admin" component={Admin} />            
+            <Route path="/signin" component={SignIn} />            
             <br /><br /><br />
           </div>
           <button className="d-md-none" onClick={this.toggleSidebar} id="toggle-menu"><i className="fa fa-bars"></i></button>

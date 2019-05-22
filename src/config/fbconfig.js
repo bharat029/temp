@@ -4,13 +4,13 @@ import 'firebase/auth'
 import 'firebase/storage'
 
 var firebaseConfig = {
-    apiKey: "AIzaSyCMhV1PgQa9g5ql_JxHW8WFSQ9doeXdTG4",
-    authDomain: "personawebsite-d3cae.firebaseapp.com",
-    databaseURL: "https://personawebsite-d3cae.firebaseio.com",
-    projectId: "personawebsite-d3cae",
-    storageBucket: "personawebsite-d3cae.appspot.com",
-    messagingSenderId: "371482197651",
-    appId: "1:371482197651:web:e03f81182e25d983"
+  apiKey: "AIzaSyAmwNvpWiUVmxf7bDN2vBUwoP2AlWQzl1E",
+  authDomain: "personalwebsite-118af.firebaseapp.com",
+  databaseURL: "https://personalwebsite-118af.firebaseio.com",
+  projectId: "personalwebsite-118af",
+  storageBucket: "personalwebsite-118af.appspot.com",
+  messagingSenderId: "173442798699",
+  appId: "1:173442798699:web:57cc5f10cb945c90"
 }
 
 firebase.initializeApp(firebaseConfig)

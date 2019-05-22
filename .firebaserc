@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "personawebsite-d3cae"
+  },
+  "targets": {
+    "personawebsite-d3cae": {
+      "hosting": {
+        "kp": [
+          "kunjalspanchal"
+        ]
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ import { addAboutMe, updateAboutMe, deleteAboutMe } from '../../store/actions/ab
 import { addProject, updateProject, deleteProject } from '../../store/actions/projectActions'
 import { addEducation, updateEducation, deleteEducation, addCertificate, updateCertificate, deleteCertificate, addSoftware, updateSoftware, deleteSoftware, addInterest, updateInterest, deleteInterest } from '../../store/actions/cvActions'
 import { updatePersonalDetails } from '../../store/actions/personal_detailsActions'
-import { signIn } from '../../store/actions/authActions'
+import { signIn, signOut } from '../../store/actions/authActions'
 import AboutMe from './Forms/AboutMe'
 import Project from './Forms/Project'
 import Education from './Forms/Education'
@@ -15,40 +15,19 @@ import Interest from './Forms/Interest'
 import PersonalDetails from './Forms/PersonalDetails'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
+import { Redirect } from 'react-router-dom'
 
 class Admin extends Component {
   constructor(props) {
     super(props)
   
     this.state = {
-       logged_in: false,
-       authError: null,
        display: 'aboutme',
        data: null,
        idx: null
     }
   }
   
-  submited = event => {
-    event.preventDefault()
-    
-    let credentials = {}
-
-    event.target.childNodes.forEach(ele => {
-      if(ele.id !== 'submit' && ele.id !== 'alert'){
-        credentials[ele.childNodes[1].id] = ele.childNodes[1].value
-      }
-    })
-
-    this.props.signIn(credentials)
-    
-    this.setState({
-      logged_in: this.props.success,
-      authError: this.props.authError,
-      display: 'aboutme'
-    })
-}
-
   clickHanfler = (e) => {
     this.setState({
       display: e.target.id
@@ -284,58 +263,48 @@ class Admin extends Component {
     }
   }
 
+  componentWillUnmount = () => {
+    this.props.signOut()
+  }
+
   render() {
-    const { personal_details } = this.props
-    return (
-      <>
-        <Helmet>
-          {
-            personal_details ? <title>Admin - {personal_details.fname + " " + personal_details.lname} </title> 
-            : <title>Admin - </title>
-          }
-        </Helmet>
-        <div className="page">
-          <h2 id="page-title">
+    const { personal_details, auth } = this.props
+
+    if(auth.uid){
+      return (
+        <>
+          <Helmet>
             {
-              personal_details ? "Welcome " + personal_details.fname : "Welcome"
+              personal_details ? <title>Admin - {personal_details.fname + " " + personal_details.lname} </title> 
+              : <title>Admin - </title>
             }
-          </h2>
-          <div id="page-content">
-          {
-            this.state.logged_in ?
-            <div>
-              <button className="btn btn-success rounded-0 border-left border-white col-3" onClick={this.clickHanfler} id="aboutme">About Me</button> 
-              <button className="btn btn-success rounded-0 border-left border-white col-3" onClick={this.clickHanfler} id="projecct">Projects</button> 
-              <button className="btn btn-success rounded-0 border-left border-white col-3" onClick={this.clickHanfler} id="cv">CV</button> 
-              <button className="btn btn-success rounded-0 border-left border-white col-3" onClick={this.clickHanfler} id="personal_details">Personal Details</button> 
+          </Helmet>
+          <div className="page">
+            <div id="page-title" className="row" style={{ width: "100%" }}>
+              <h2 className="col-8">{ personal_details ? "Welcome " + personal_details.fname : "Welcome" }</h2>
+              <div className="mb-1"><button className="btn btn-primary" onClick={() => this.props.signOut()}>Log Out</button></div>
+            </div>
+            <div id="page-content">
+              <div className="row">
+                <button className="btn btn-success rounded-0 border-left border-white col-3" onClick={this.clickHanfler} id="aboutme">About Me</button> 
+                <button className="btn btn-success rounded-0 border-left border-white col-3" onClick={this.clickHanfler} id="projecct">Projects</button> 
+                <button className="btn btn-success rounded-0 border-left border-white col-3" onClick={this.clickHanfler} id="cv">CV</button> 
+                <button className="btn btn-success rounded-0 border-left border-white col-3" onClick={this.clickHanfler} id="personal_details">Personal Details</button> 
+              </div>
               <ul className="list-unstyled">{ this.display(this.state.display) }</ul>
-            </div>:
-            <form method="post" onSubmit={this.submited} className="col-5 offset-1" action="">
-              { this.props.authError && <div id="alert" class="alert alert-danger" role="alert">{ this.props.authError }</div> }
-              <div className="form-group">
-                <label htmlFor="email">Email:</label>
-                <input type="text" className="form-control" placeholder="Email" name="email" id="email" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input type="password" className="form-control" placeholder="Password"  name="password" id="password" />
-              </div>
-              <div id='submit' className="form-group col-12 text-center">
-                  <button type="submit" className="btn btn-success pl-0 pr-0 text-center col-4">Sign In</button>
-              </div>
-            </form>
-          }
-          </div>
-        </div>  
-      </>
-    )
+            </div>
+          </div>  
+        </>
+      )
+    } else {
+      return <Redirect to="/signin" />
+    }
   }
 }
 
 const mapStateToProp = (state) => {
   return {
-    authError: state.auth.authError,
-    success: state.auth.success,
+    auth: state.firebase.auth,
     aboutme: state.firestore.ordered.aboutme,
     projects: state.firestore.ordered.projects,
     education: state.firestore.ordered.education,
@@ -367,7 +336,8 @@ const mapDispatchToProp = dispatch => {
     updateInterest: (inte, idx) => dispatch(updateInterest(inte, idx)),
     deleteInterest: (idx) => dispatch(deleteInterest(idx)),
     updatePersonalDetails: (details) => dispatch(updatePersonalDetails(details)),
-    signIn: (credentials) => dispatch(signIn(credentials))
+    signIn: (credentials) => dispatch(signIn(credentials)),
+    signOut: () => dispatch(signOut())
   }
 }
 

@@ -344,12 +344,12 @@ const mapDispatchToProp = dispatch => {
 export default compose(
   connect(mapStateToProp, mapDispatchToProp),
   firestoreConnect([
-    { collection: 'projects', orderby: ['createdOn', 'desc'] },
-    { collection: 'aboutme', orderby: ['createdOn'] },
+    { collection: 'projects', orderBy: ['createdOn', 'desc'] },
+    { collection: 'aboutme', orderBy: ['createdOn'] },
     { collection: 'personal_details' }, 
-    { collection: 'education', orderby: ['createdOn', 'desc'] },
-    { collection: 'certificate', orderby: ['createdOn', 'desc'] },
-    { collection: 'software', orderby: ['createdOn', 'desc'] },
-    { collection: 'interest', orderby: ['createdOn', 'desc'] }
+    { collection: 'education', orderBy: ['createdOn', 'desc'] },
+    { collection: 'certificate', orderBy: ['createdOn', 'desc'] },
+    { collection: 'software', orderBy: ['createdOn', 'desc'] },
+    { collection: 'interest', orderBy: ['createdOn', 'desc'] }
   ])
 )(Admin)

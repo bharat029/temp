@@ -52,7 +52,7 @@ class Projects extends Component {
             <div id="proj-wrapper" className="row no-gutters">
               {
                 projects ? 
-                projects.map((proj, idx) => <div key={proj.id} area-roll="button" id={idx} onClick={this.btnClick} className="col-lg-3 col-md-4 col-sm-6 col-12 img-container"><img className="project-button" src={proj['p-img']} id={idx} alt={proj['p-title']} /><div id={idx} className="overlay"><span id={idx}>{proj['p-title']}</span></div></div>) : 
+                projects.map((proj, idx) => <div key={proj.id} className="col-lg-3 col-md-4 try col-sm-6 col-12 img-container"><img className="project-button" src={proj['p-img']} alt={proj['p-title']} /><div area-roll="button" onClick={this.btnClick} id={idx} className="overlay"><span id={idx}>{proj['p-title']}</span></div></div>) : 
                 <p>Loading Data... Please wsit!!</p>
               }
             </div>

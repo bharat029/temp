@@ -59,7 +59,7 @@ class Project extends Component {
           project['p-title'] = this.props.project['p-title']
           this.props.updateProject(project, this.props.project.id) 
         } else {
-          project['p-img'] = "https://firebasestorage.googleapis.com/v0/b/personawebsite-d3cae.appspot.com/o/imgs%2Fplaceholder.png?alt=media&token=cf0a2ef8-192c-4272-b106-c766ba2762f3"
+          project['p-img'] = "https://firebasestorage.googleapis.com/v0/b/personalwebsite-118af.appspot.com/o/imgs%2Fplaceholder.png?alt=media&token=5c411709-7fe6-40ee-9848-1b03e6943a2d"
           this.props.addProject(project)
         }
     }

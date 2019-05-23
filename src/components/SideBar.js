@@ -32,13 +32,13 @@ const SideBar = ({ personal_details }) => {
         <div id="contact" className="row">
         <ul className="contact-info">
             <li>
-                <a href={ personal_details ? "mailto:" + personal_details.email : "#" } className="fa fa-envelope-square"><span>E-mail</span></a>
+                <a href={ personal_details ? "mailto:" + personal_details.email : "#" } rel="noopener noreferrer" target='_blank' className="fa fa-envelope-square"><span>E-mail</span></a>
             </li>
             <li>
-                <a href={ personal_details ? personal_details.linkedin : "#" } className="fa fa-linkedin"><span>Linkedin</span></a>
+                <a href={ personal_details ? personal_details.linkedin : "#" } rel="noopener noreferrer" target='_blank' className="fa fa-linkedin"><span>Linkedin</span></a>
             </li>
             <li>
-                <a href={ personal_details ? personal_details.github : "#" } className="fa fa-github"><span>Github</span></a>
+                <a href={ personal_details ? personal_details.github : "#" } rel="noopener noreferrer" target='_blank' className="fa fa-github"><span>Github</span></a>
             </li>
         </ul>
         </div>

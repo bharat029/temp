@@ -195,7 +195,8 @@
   transition: all 500ms ease;
 }
 
-.img-container:hover {
+.img-container:hover,
+.img-container:focus {
   transform: scale(1.2);
  }
 

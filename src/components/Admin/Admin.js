@@ -263,10 +263,6 @@ class Admin extends Component {
     }
   }
 
-  componentWillUnmount = () => {
-    this.props.signOut()
-  }
-
   render() {
     const { personal_details, auth } = this.props
 

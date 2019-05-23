@@ -28,7 +28,7 @@ class App extends Component {
             <Route path="/signin" component={SignIn} />            
             <br /><br /><br />
           </div>
-          <button className="d-md-none" onClick={this.toggleSidebar} id="toggle-menu"><i className="fa fa-bars"></i></button>
+          <button className="d-md-none" onClick={this.toggleSidebar} id="toggle-menu"><i className="fa fa-bars" /><span style={{ fontSize: "0" }}>Toggle Sidebar</span></button>
         </Router>
       </>
     );

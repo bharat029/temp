@@ -37,7 +37,7 @@ class SignIn extends Component {
           </Helmet>
           <div className="page">
             <h2 id="page-title">Sign In Admin</h2>
-            <form method="post" onSubmit={this.submited} className="col-5 offset-1 mt-5" action="">
+            <form method="post" onSubmit={this.submited} className="col-md-5 offset-md-1 mt-5" action="">
               { authError && <div id="alert" className="alert alert-danger" role="alert">{ authError }</div> }
               <div className="form-group">
                 <label htmlFor="email">Email:</label>
@@ -48,7 +48,7 @@ class SignIn extends Component {
                 <input type="password" onChange={this.changeHandler} className="form-control" placeholder="Password"  name="password" id="password" />
               </div>
               <div id='submit' className="form-group col-12 text-center">
-                <button type="submit" className="btn btn-success pl-0 pr-0 text-center col-4">Sign In</button>
+                <button type="submit" className="btn btn-success pl-0 pr-0 text-center col-md-4 col-6">Sign In</button>
               </div>
             </form>
           </div>

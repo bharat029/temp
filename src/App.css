@@ -91,7 +91,6 @@
   list-style: none;
 }
 
-/* Social links individual element's styles */
 .contact-info a {
   color: white;
   display: block;
@@ -102,15 +101,16 @@
   line-height: 1.3em;
   text-align: center;
   border-radius: 50%;
+  transition: 500ms ease-out;
 }
 
-/* Social links individual element's on hover styles */
 .contact-info a:hover {
-  opacity: 0.7;
   text-decoration: none;
+  background: #fff;
+  transform: rotate(360deg);
 }
 
-.contact-info a > span {
+.contact-info a span {
   font-size: 0px;
 }
 
@@ -118,15 +118,29 @@
   background: #211f1f ;
 }
 
+.fa-github:hover, 
+.fa-github:focus {
+  color: #211f1f;
+}
+
 .fa-linkedin {
   background: #007bb5;
+}
+
+.fa-linkedin:hover, 
+.fa-linkedin:focus {
+  color: #007bb5;
 }
 
 .fa-envelope-square {
   background: #dd4b39;
 }
 
-/* projects popup styles */
+.fa-envelope-square:hover,
+.fa-envelope-square:focus {
+  color: #dd4b39;
+}
+
 #project {
   position: fixed;
   z-index: 3;
@@ -140,7 +154,6 @@
   background-color: rgba(0,0,0,0.8);
 }
 
-/* Project popup content styles */
 #project-content {
   background: black;
   color: white;
@@ -155,7 +168,6 @@
   padding-left: 2.5%;
 }
 
-/* Popup close button style */
 #close {
   color: white;
   float: right;
@@ -164,7 +176,6 @@
   font-weight: bold;
 }
 
-/* Popup close button's hover and focus styles */
 #close:hover,
 #close:focus {
   color: white;
@@ -230,18 +241,15 @@ iframe {
   text-decoration: underline;
 }
 
-/* Padding for the contents of description and heghlights */
 dd {
   padding-left: 10%;
 }
 
-/* About Me main content */
 .about-me {
   padding:  0% 5%;
   text-align: justify;
 }
 
-/* Toggle menu button's styles */
 #toggle-menu {
   position: fixed;
   z-index: 3;
@@ -339,12 +347,4 @@ dd {
     margin: 0 auto;
     justify-content: space-around;
   }
-}
-
-span.screen-reader-text {
-  clip: rect(1px, 1px, 1px, 1px);
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
 }

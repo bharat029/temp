@@ -1,6 +1,12 @@
-# React Based Static Portfolio Website
+# A Simple Dynamic Portfolio Website
 
-This is a simple generic portfolio website.
+This is a SPA (Single Page Website).
+
+Technologies Used:
+* Boostrap 4
+* React 
+* Redux
+* Firebase
 
 ## Components And Structure
 
@@ -11,37 +17,79 @@ This website has the following components:
 * Projects
 * Project's Popup
 * CV
+* Admin (Complex)
+    1. About Me List View
+    2. About Me Form (For Update and Insert)
+    3. Projects List View
+    4. Projects Form (For Update and Insert)
+    5. CV Section (Complex)
+        i. Education List View 
+        ii. Education Form (For Update and Insert)
+        iii. Certificate List View
+        iv. Certificate Form (For Update and Insert)
+        v. Software List View
+        vi. Software Form (For Update and Insert)
+        vii. Interest List View
+        viii. Interest Form (For Update and Insert)
+    6. Personal Details Form (For Update Only)
 
-Apart from Sidebar wich appears on every page the rest of the components represent specific sections of the website.
+## Structure Of The Firestore
 
-## Where to add your info?
+1. About Me: 
 
-### Your Image And Resume
+    | Field | Description       |
+    | ----- | ----------------- |
+    | id    | Unique ID         |
+    | abtme | single paragrapoh |
 
-* Replace the `favicon.ico` in the `public` folder with your custom favicon.  
-* You need to save your image in the `src/imgs` folder by the name `me.png`.
-* You need to save your resume in the `src/files` folder by the name `Resume.pdf`.
+2. Project: 
 
-### Your AboutMe And CV Section's Info
+    | Field  | Description                     |
+    | ------ | ------------------------------- |
+    | id     | Unique ID                       | 
+    | title  | Project Title                   |
+    | desc-1 | First Paragraph of Description  |
+    | desc-2 | Second Paragraph of Description |
+    | desc-3 | Third Paragraph of Description  |
+    | high-1 | First Highlight Point           |
+    | high-2 | Second Highlight Point          |
+    | high-3 | Third Highlight Point           |
+    | high-4 | Fourth Highlight Point          |
+    | high-5 | Fifth Highlight Point           |
+    | repo   | Repository Link                 |
 
-You will find the corresponding aboutMe.json and cv.json inside the `src/pages` folder.
+3. Education:
 
-### Your Projects Section
+    | Field  | Description                     |
+    | ------ | ------------------------------- |
+    | id     | Unique ID                       | 
+    | title  | Education Title                 |
+    | desc-1 | First Point of Description      |
+    | desc-2 | Second Point of Description     |
+    | desc-3 | Third Point of Description      |
+    | desc-4 | Fourth Point of Description     |
+    | desc-5 | Fifth Point of Description      |
 
-* You need to enter your Project title and other details regarding your projects in the projects.json file again in the `src/pages` folder.
-* For the embeded iframe (youtube video) you only need to enter the code of the your youtube video, E.g. on opening your video in youtube the url would look like `https://www.youtube.com/watch?v=yXY3f9jw7fg` you only need to enter `yXY3f9jw7fg` to add it to the popup.
-* Also for the project images, they need to be saved with the same name as the the project title with a `.png` extension in the `src/imgs` folder.
+4. Certificate:
 
-## Deploying Your Website
+    | Field  | Description                     |
+    | ------ | ------------------------------- |
+    | id     | Unique ID                       | 
+    | title  | Certificate Title               |
+    | desc   | Description                     |
 
-To be able to deploy this website you'll need to install `node js` you can download it from [here](https://www.nodejs.org).
-* Installing all the dependencies
+1. About Me: 
 
-    After you cd into this folder inyour terminal run:
+    | Field | Description      |
+    | ----- | ---------------- |
+    | id    | Unique ID        |
+    | abtme | single Point     |
 
-    `npm install`
+6. Interest:
 
-* This website assumes that you are deploying it on Github Pages in which case you need to edit the homepage in the package.json folder to be of the form `https://www.your_github_username.github.io/the_name_of_your_repository`.  Now run `npm run deploy` this will deploy your website to your homepage.
-
-* If you dont want to host it from Github then remove the homepage and deploy and predeploy scripts in the package.json and run `npm run build`. This would create an optimised version of your website inside the build folder. Now you can use this build folder to host your website from anywhere.
+    | Field  | Description                     |
+    | ------ | ------------------------------- |
+    | id     | Unique ID                       | 
+    | title  | Interest Title               |
+    | desc   | Description                     |
 

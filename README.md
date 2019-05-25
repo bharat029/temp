@@ -23,14 +23,14 @@ This website has the following components:
     3. Projects List View
     4. Projects Form (For Update and Insert)
     5. CV Section (Complex)
-        i. Education List View 
-        ii. Education Form (For Update and Insert)
-        iii. Certificate List View
-        iv. Certificate Form (For Update and Insert)
-        v. Software List View
-        vi. Software Form (For Update and Insert)
-        vii. Interest List View
-        viii. Interest Form (For Update and Insert)
+        1. Education List View 
+        2. Education Form (For Update and Insert)
+        3. Certificate List View
+        4. Certificate Form (For Update and Insert)
+        5. Software List View
+        6. Software Form (For Update and Insert)
+        7. Interest List View
+        8. Interest Form (For Update and Insert)
     6. Personal Details Form (For Update Only)
 
 ## Structure Of The Firestore
@@ -60,15 +60,16 @@ This website has the following components:
 
 3. Education:
 
-    | Field  | Description                     |
-    | ------ | ------------------------------- |
-    | id     | Unique ID                       | 
-    | title  | Education Title                 |
-    | desc-1 | First Point of Description      |
-    | desc-2 | Second Point of Description     |
-    | desc-3 | Third Point of Description      |
-    | desc-4 | Fourth Point of Description     |
-    | desc-5 | Fifth Point of Description      |
+    | Field  | Description                             |
+    | ------ | --------------------------------------- |
+    | id     | Unique ID                               | 
+    | title  | Education Title                         |
+    | img    | Background Image for the Project Button |
+    | desc-1 | First Point of Description              |
+    | desc-2 | Second Point of Description             |
+    | desc-3 | Third Point of Description              |
+    | desc-4 | Fourth Point of Description             |
+    | desc-5 | Fifth Point of Description              |
 
 4. Certificate:
 
@@ -90,6 +91,10 @@ This website has the following components:
     | Field  | Description                     |
     | ------ | ------------------------------- |
     | id     | Unique ID                       | 
-    | title  | Interest Title               |
+    | title  | Interest Title                  |
     | desc   | Description                     |
 
+## Structure Of The Firebase Storage
+
+* File: ``` files/Resume.pdf ``` Only for the Resume
+* Images: ``` imgs/ ``` For the Project Background and the sidebar image

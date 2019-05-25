@@ -1,8 +1,30 @@
 import React from 'react'
 
-const Education = ({ education, edits }) => {
+const Education = ({ education, changeView, add, update }) => {
+  const submited = e => {
+    e.preventDefault()
+
+    let edu = {}
+
+    e.target.childNodes.forEach(ele => {
+      if(ele.id !== 'submit'){
+        edu[ 'e-' + ele.childNodes[1].id] = ele.childNodes[1].value
+      }
+    })
+
+    edu['createdOn'] = new Date()
+    
+    if(education){
+      update(edu, education.id)
+    } else {
+      add(edu)
+    }
+
+    changeView()
+  }
+  
   return (
-    <form method="post" onSubmit={edits} className="col-5 m-5" action="">
+    <form method="post" onSubmit={submited} className="col-md-5 m-5" action="">
       <div className="form-group">
         <label htmlFor="title">Title:</label>
         <input type="text" className="form-control" placeholder="Education Title" defaultValue={education && education['e-title']} name="title" id="title" />
@@ -28,7 +50,7 @@ const Education = ({ education, edits }) => {
         <input type="text" className="form-control" placeholder="First Point of Education" defaultValue={education && education['e-desc-5']} name="desc-5" id="desc-5" />
       </div>
       <div id='submit' className="form-group col-12 text-center">
-          <button type="submit" className="btn btn-success pl-0 pr-0 text-center col-4">{ education ? "Update" : "Submit" }</button>
+          <button type="submit" className="btn btn-success pl-0 pr-0 text-center col-md-4 col-6">{ education ? "Update" : "Submit" }</button>
       </div>
     </form>
   )

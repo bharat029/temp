@@ -75,13 +75,33 @@
 }
 
 /* Navbar individual element's active state and on hover styles */
-.active, .navi a:hover {
+.navi .active, .navi a:hover {
   background: grey;
   color: black !important;
   text-decoration: none !important;
 }
 
-/* Social links styles */
+#cv-link a, #cv-link a:hover, #cv-link a:focus {
+  text-decoration: none;
+  color: black;
+}
+
+.admin-navi {
+  background: green;
+  color: white;
+  border: 1px solid white;
+  text-align: center;
+  text-decoration: none;
+  transition: 250ms;
+}
+
+.admin-navi:hover, .admin-navi:focus, .admin-navi.active {
+  background: lightblue;
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+}
+
 .contact-info {
   display: flex;
   position: absolute;

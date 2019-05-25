@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { addProject, updateProject, deleteProject } from '../../../store/actions/projectActions'
-import { connect } from 'react-redux'
 import { storage } from '../../../config/fbconfig'
 
-class Project extends Component {
+class ProjectForm extends Component {
   constructor(props) {
     super(props)
   
@@ -47,9 +45,9 @@ class Project extends Component {
             
             if(this.props.project){
               project['p-title'] = this.props.project['p-title']
-              this.props.updateProject(project, this.props.project.id) 
+              this.props.update(project, this.props.project.id) 
             } else {
-              this.props.addProject(project)
+              this.props.add(project)
             }
           })
         })
@@ -57,14 +55,14 @@ class Project extends Component {
         if(this.props.project){
           project['p-img'] = this.props.project['p-img']
           project['p-title'] = this.props.project['p-title']
-          this.props.updateProject(project, this.props.project.id) 
+          this.props.update(project, this.props.project.id) 
         } else {
           project['p-img'] = "https://firebasestorage.googleapis.com/v0/b/personalwebsite-118af.appspot.com/o/imgs%2Fplaceholder.png?alt=media&token=5c411709-7fe6-40ee-9848-1b03e6943a2d"
-          this.props.addProject(project)
+          this.props.add(project)
         }
     }
 
-    this.props.edits(e)
+    this.props.changeView(e)
   }
   
 
@@ -72,7 +70,7 @@ class Project extends Component {
     const { project } = this.props
 
     return (
-      <form method="post" onSubmit={ this.submitHnadler } className="col-5 m-5" action="">
+      <form method="post" onSubmit={ this.submitHnadler } className="col-md-5 m-5" action="">
         <div className="form-group">
           <label htmlFor="title">Title:</label>
           <input type="text" className="form-control" placeholder="Project TItle" defaultValue={project && project['p-title']} name="title" id="title" />
@@ -122,19 +120,11 @@ class Project extends Component {
           <input type="text" className="form-control text-black" placeholder="Repository Link" defaultValue={project && project['p-repo']} name="repo" id="repo" />
         </div>
         <div id='submit' className="form-group col-12 text-center">
-            <button type="submit" className="btn btn-success pl-0 pr-0 text-center col-4">{ project ? "Update" : "Submit" }</button>
+            <button type="submit" className="btn btn-success pl-0 pr-0 text-center col-md-4 col-6">{ project ? "Update" : "Submit" }</button>
         </div>
       </form>
     )
   }
 }
 
-const mapDispatchToProp = dispatch => {
-  return {
-    addProject: (project) => dispatch(addProject(project)),
-    updateProject: (project, idx) => dispatch(updateProject(project, idx)),
-    deleteProject: (idx) => dispatch(deleteProject(idx)),
-  }
-}
-
-export default connect(null, mapDispatchToProp)(Project)
+export default ProjectForm

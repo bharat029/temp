@@ -1,14 +1,16 @@
  #sidebar {
   z-index: 2;
+  position: fixed;
+  left: -100%;
   background: black;
   min-height: 500px;
   height: 100vh;
-  display: none;
   color: white;
   text-align: center;
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
+  transition: 500ms;
  }
 
 #me {
@@ -42,19 +44,12 @@
   overflow: -moz-scrollbars-none; 
   -ms-overflow-style: none; 
   height: 100vh;  
-  display: block;
 }
 
 #wrapper.menuDisplayed #sidebar {
-  display: block;
+  left: 0;
 }
 
-#wrapper.menuDisplayed #main-content {
-  display: none;
-}
-
-
-/* Navbar styles */
 .navi {
   display: block;
   margin-top: 5vh;
@@ -63,7 +58,6 @@
   width: 100%;
 }
 
-/* Navbar individual element's styles */
 .navi a {
   margin-top: 5px;
   color: white;
@@ -357,7 +351,7 @@ dd {
 
 @media (min-width: 768px) {
   #sidebar {
-    display: block;
+    left: 0;
   }
 
   .contact-info {

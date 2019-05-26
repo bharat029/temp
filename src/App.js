@@ -20,7 +20,7 @@ class App extends Component {
       <>
         <Router>
           <SideBar />
-          <div className="col-md-9" id="main-content">
+          <div className="col-md-9 offset-md-3" id="main-content">
             <Route exact path="/" component={Aboutme} />
             <Route path="/projects" component={Projects} />
             <Route path="/cv" component={Cv} />

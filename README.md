@@ -94,6 +94,19 @@ This website has the following components:
     | title  | Interest Title                  |
     | desc   | Description                     |
 
+## Constraints And Ordering (For Admin)
+
+* In the Personal Details may only be updated and not added or deleted. But it's okay to leave some of the fields empty.
+* In the Projects Section:
+    - The Title can not be updated so if you wish to change the title you need to delete the existing project and insert a new one in.
+    - The Background image can be unique for each project. But unless a new image is uploaded the a generic background is used by default.
+    - Each project should have at least one paragraph of description and and one highlight point.
+    - Demo video code and repository link are also required fields.
+* In the Education Section the title and at least one point of description is required.
+* For all of the rest of them all the form fiedls are required.
+
+As for the ordering except for the About Me Section in all of the rest the entry thats updated or inserted latest shows up first.
+
 ## Structure Of The Firebase Storage
 
 * File: ``` files/Resume.pdf ``` Only for the Resume

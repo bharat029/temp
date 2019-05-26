@@ -10,9 +10,7 @@ import SignIn from './components/Admin/SignIn'
 
 class App extends Component {
   toggleSidebar = (e) => {
-    setTimeout(() => {
-      document.getElementById('wrapper').classList.toggle("menuDisplayed");
-    }, 250);
+    document.getElementById('wrapper').classList.toggle("menuDisplayed");
   }
 
   render() {
